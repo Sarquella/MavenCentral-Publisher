@@ -17,7 +17,7 @@ gradlePlugin {
     plugins {
         create("publisherPlugin") {
             id = "dev.sarquella.mavencentral-publisher"
-            implementationClass = "dev.sarquella.PublisherPlugin"
+            implementationClass = "dev.sarquella.plugin.PublisherPlugin"
         }
     }
 }
