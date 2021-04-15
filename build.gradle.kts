@@ -1,5 +1,7 @@
 plugins {
-    java
+    kotlin("jvm") version "1.3.72"
+    id("java-gradle-plugin")
+    id("maven-publish")
 }
 
 group = "dev.sarquella"
@@ -10,3 +12,12 @@ repositories {
 }
 
 dependencies {}
+
+gradlePlugin {
+    plugins {
+        create("publisherPlugin") {
+            id = "dev.sarquella.mavencentral-publisher"
+            implementationClass = "dev.sarquella.PublisherPlugin"
+        }
+    }
+}
