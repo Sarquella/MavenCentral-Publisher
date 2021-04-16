@@ -1,9 +1,9 @@
-package dev.sarquella.plugin.extension
+package dev.sarquella.plugin.extensions
 
 import org.gradle.api.provider.Property
 
-abstract class PublisherPluginExtension {
-    abstract val publishedGroupId: Property<String>
+abstract class PublicationParamsExtension {
+    abstract val groupId: Property<String>
     abstract val artifact: Property<String>
     abstract val version: Property<String>
 

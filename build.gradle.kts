@@ -9,9 +9,13 @@ version = "1.0"
 
 repositories {
     mavenCentral()
+    google()
 }
 
-dependencies {}
+dependencies {
+    compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
+    compileOnly("com.android.tools.build:gradle:4.1.3")
+}
 
 gradlePlugin {
     plugins {
@@ -20,4 +24,23 @@ gradlePlugin {
             implementationClass = "dev.sarquella.plugin.PublisherPlugin"
         }
     }
+}
+
+//Local publishing
+publishing {
+    repositories {
+        maven {
+            url = uri("$buildDir/repo")
+        }
+    }
+}
+
+tasks {
+
+    register("getPath") {
+        project.plugins.forEach {
+            println(it)
+        }
+    }
+
 }

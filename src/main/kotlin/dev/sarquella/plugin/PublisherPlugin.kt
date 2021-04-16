@@ -1,39 +1,42 @@
 package dev.sarquella.plugin
 
-import dev.sarquella.plugin.extension.PublisherPluginExtension
-import dev.sarquella.plugin.task.PublishToMavenCentral
+import dev.sarquella.plugin.extensions.PublicationParamsExtension
+import dev.sarquella.plugin.helper.extensions.applyPlugin
+import dev.sarquella.plugin.helper.extensions.createExtension
+import dev.sarquella.plugin.helper.extensions.registerTask
+import dev.sarquella.plugin.tasks.publishing.GeneratePublication
+import dev.sarquella.plugin.tasks.publishing.LoadCredentials
+import dev.sarquella.plugin.tasks.publishing.PublishToMavenCentral
+import dev.sarquella.plugin.tasks.publishing.SignPublication
+import dev.sarquella.plugin.tasks.sources.GenerateJavadoc
+import dev.sarquella.plugin.tasks.sources.GenerateJavadocJar
+import dev.sarquella.plugin.tasks.sources.GenerateSourceJar
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
+import org.gradle.api.publish.plugins.PublishingPlugin
 
-@Suppress("unused")
-class PublisherPlugin: Plugin<Project> {
+class PublisherPlugin : Plugin<Project> {
 
-    override fun apply(project: Project) {
-       val extension = project.extensions.create("mavenCentralPublishing", PublisherPluginExtension::class.java)
-
-        project.tasks.register("publishToMavenCentral", PublishToMavenCentral::class.java) { task ->
-            task.doLast {
-                println("publishedGroupId: ${extension.publishedGroupId.get()}")
-                println("artifact: ${extension.artifact.get()}")
-                println("version: ${extension.version.get()}")
-
-                println("description: ${extension.description.get()}")
-
-                println("webUrl: ${extension.webUrl.get()}")
-                println("repoUrl: ${extension.repoUrl.get()}")
-                println("vcsUrl: ${extension.vcsUrl.get()}")
-
-                println("developerId: ${extension.developerId.get()}")
-                println("developerName: ${extension.developerName.get()}")
-                println("developerEmail: ${extension.developerEmail.get()}")
-
-                println("licenseName: ${extension.licenseName.get()}")
-                println("licenseUrl: ${extension.licenseUrl.get()}")
-
-                println("propertiesFile: ${extension.propertiesFile.get()}")
-            }
-        }
-
+    companion object {
+        const val PLUGIN_EXTENSION = "mavenCentralPublication"
+        const val PLUGIN_GROUP = "mavencentral-publishing"
     }
 
+    override fun apply(project: Project) {
+        with(project) {
+            createExtension(PLUGIN_EXTENSION, PublicationParamsExtension::class.java)
+
+            applyPlugin(PublishingPlugin::class.java)
+            applyPlugin(MavenPublishPlugin::class.java)
+
+            registerTask(GenerateJavadoc::class.java)
+            registerTask(GenerateJavadocJar::class.java)
+            registerTask(GenerateSourceJar::class.java)
+            registerTask(LoadCredentials::class.java)
+            registerTask(GeneratePublication::class.java)
+            registerTask(SignPublication::class.java)
+            registerTask(PublishToMavenCentral::class.java)
+        }
+    }
 }
