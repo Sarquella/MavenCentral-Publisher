@@ -44,16 +44,16 @@ abstract class GeneratePublication : DefaultTask() {
 
                 pom.licenses { licenses ->
                     licenses.license { license ->
-                        license.name.set(params.licenseName.get())
-                        license.url.set(params.licenseUrl.get())
+                        license.name.set(params.license.name.get())
+                        license.url.set(params.license.url.get())
                     }
                 }
 
                 pom.developers { devs ->
                     devs.developer { dev ->
-                        dev.id.set(params.developerId.get())
-                        dev.name.set(params.developerName.get())
-                        dev.email.set(params.developerEmail.get())
+                        dev.id.set(params.developer.id.get())
+                        dev.name.set(params.developer.name.get())
+                        dev.email.set(params.developer.email.get())
                     }
                 }
 

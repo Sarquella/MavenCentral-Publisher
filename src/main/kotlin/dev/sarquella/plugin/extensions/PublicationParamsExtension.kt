@@ -1,6 +1,8 @@
 package dev.sarquella.plugin.extensions
 
+import org.gradle.api.Action
 import org.gradle.api.provider.Property
+import org.gradle.api.tasks.Nested
 
 abstract class PublicationParamsExtension {
     abstract val groupId: Property<String>
@@ -13,12 +15,32 @@ abstract class PublicationParamsExtension {
     abstract val repoUrl: Property<String>
     abstract val vcsUrl: Property<String>
 
-    abstract val developerId: Property<String>
-    abstract val developerName: Property<String>
-    abstract val developerEmail: Property<String>
+    @get:Nested
+    abstract val developer: Developer
 
-    abstract val licenseName: Property<String>
-    abstract val licenseUrl: Property<String>
+    @Suppress("unused")
+    fun developer(action: Action<in Developer>) {
+        action.execute(developer)
+    }
+
+    @get:Nested
+    abstract val license: License
+
+    @Suppress("unused")
+    fun license(action: Action<in License>) {
+        action.execute(license)
+    }
 
     abstract val propertiesFile: Property<String>
+
+    abstract class Developer {
+        abstract val id: Property<String>
+        abstract val name: Property<String>
+        abstract val email: Property<String>
+    }
+
+    abstract class License {
+        abstract val name: Property<String>
+        abstract val url: Property<String>
+    }
 }
