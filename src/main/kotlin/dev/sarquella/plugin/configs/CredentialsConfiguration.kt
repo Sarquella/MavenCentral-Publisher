@@ -1,14 +1,13 @@
-package dev.sarquella.plugin.tasks.publishing
+package dev.sarquella.plugin.configs
 
+import dev.sarquella.plugin.configs.base.Configuration
 import dev.sarquella.plugin.helper.extensions.params
-import org.gradle.api.DefaultTask
-import org.gradle.api.tasks.TaskAction
+import org.gradle.api.Project
 import java.util.*
 
-abstract class LoadCredentials: DefaultTask() {
+object CredentialsConfiguration: Configuration {
 
-    @TaskAction
-    fun load() {
+    override fun configure(project: Project) {
         val params = project.params
 
         val credentials = Properties().apply {

@@ -1,25 +1,17 @@
-package dev.sarquella.plugin.tasks.publishing
+package dev.sarquella.plugin.configs
 
+import dev.sarquella.plugin.configs.base.Configuration
 import dev.sarquella.plugin.helper.extensions.isAndroidLibrary
 import dev.sarquella.plugin.helper.extensions.params
 import dev.sarquella.plugin.helper.extensions.publishing
-import dev.sarquella.plugin.tasks.sources.GenerateSourceJar
-import org.gradle.api.DefaultTask
+import dev.sarquella.plugin.tasks.GenerateSourceJar
+import org.gradle.api.Project
 import org.gradle.api.publish.maven.MavenPublication
-import org.gradle.api.tasks.TaskAction
 import java.net.URI
 
-abstract class GeneratePublication : DefaultTask() {
+object PublicationConfiguration: Configuration {
 
-    private val loadCredentials = project.tasks.withType(LoadCredentials::class.java).first()
-    private val sourceJar = project.tasks.withType(GenerateSourceJar::class.java).first()
-
-    init {
-        dependsOn.add(loadCredentials)
-    }
-
-    @TaskAction
-    fun generate() {
+    override fun configure(project: Project) {
         val params = project.params
         val publishing = project.publishing
 
@@ -33,6 +25,7 @@ abstract class GeneratePublication : DefaultTask() {
             } else {
                 publication.artifact("${project.buildDir}/libs/${project.name}-${params.version.get()}.jar")
             }
+            val sourceJar = project.tasks.withType(GenerateSourceJar::class.java).first()
             publication.artifact(sourceJar.destinationDirectory) { artifact ->
                 artifact.builtBy(sourceJar)
             }

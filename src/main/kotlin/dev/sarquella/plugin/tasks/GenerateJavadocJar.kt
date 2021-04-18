@@ -1,4 +1,4 @@
-package dev.sarquella.plugin.tasks.sources
+package dev.sarquella.plugin.tasks
 
 import org.gradle.jvm.tasks.Jar
 

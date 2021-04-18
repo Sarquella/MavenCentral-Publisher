@@ -2,6 +2,7 @@ package dev.sarquella.plugin.helper.extensions
 
 import com.android.build.gradle.BaseExtension
 import dev.sarquella.plugin.PublisherPlugin
+import dev.sarquella.plugin.configs.base.Configuration
 import dev.sarquella.plugin.extensions.PublicationParamsExtension
 import org.gradle.api.Project
 import org.gradle.api.Task
@@ -31,7 +32,11 @@ fun <T> Project.applyPlugin(plugin: Class<T>) {
     pluginManager.apply(plugin)
 }
 
-fun <T: Task> Project.registerTask(task: Class<T>) {
+fun <T : Configuration> Project.configure(configuration: T) {
+    configuration.configure(this)
+}
+
+fun <T : Task> Project.registerTask(task: Class<T>) {
     tasks.register(task.taskName(), task).apply {
         get().group = PublisherPlugin.PLUGIN_GROUP
     }
