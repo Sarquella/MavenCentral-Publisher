@@ -32,8 +32,8 @@ object PublicationConfiguration: Configuration {
 
             publication.pom { pom ->
                 pom.name.set(params.artifact.get())
-                pom.description.set(params.description.get())
-                pom.url.set(params.webUrl.get())
+                pom.description.set(params.description.orNull)
+                pom.url.set(params.webUrl.orNull ?: params.repoUrl.get())
 
                 pom.licenses { licenses ->
                     licenses.license { license ->

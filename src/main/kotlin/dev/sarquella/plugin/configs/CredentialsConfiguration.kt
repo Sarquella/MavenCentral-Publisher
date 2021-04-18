@@ -7,11 +7,13 @@ import java.util.*
 
 object CredentialsConfiguration: Configuration {
 
+    private const val DEFAULT_FILE = "local.properties"
+
     override fun configure(project: Project) {
         val params = project.params
 
         val credentials = Properties().apply {
-            load(project.rootProject.file(params.propertiesFile.get()).inputStream())
+            load(project.rootProject.file(params.propertiesFile.orNull ?: DEFAULT_FILE).inputStream())
         }
 
         val properties = project.extensions.extraProperties
