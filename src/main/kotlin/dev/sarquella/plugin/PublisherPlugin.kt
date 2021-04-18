@@ -1,6 +1,7 @@
 package dev.sarquella.plugin
 
 import dev.sarquella.plugin.configs.CredentialsConfiguration
+import dev.sarquella.plugin.configs.ProjectConfiguration
 import dev.sarquella.plugin.configs.PublicationConfiguration
 import dev.sarquella.plugin.configs.SigningConfiguration
 import dev.sarquella.plugin.extensions.PublicationParamsExtension
@@ -39,6 +40,7 @@ class PublisherPlugin : Plugin<Project> {
             registerTask(PublishToMavenCentral::class.java)
 
             afterEvaluate {
+                configure(ProjectConfiguration)
                 configure(CredentialsConfiguration)
                 configure(SigningConfiguration)
                 configure(PublicationConfiguration)

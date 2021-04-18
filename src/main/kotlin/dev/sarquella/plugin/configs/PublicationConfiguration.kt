@@ -4,6 +4,7 @@ import dev.sarquella.plugin.configs.base.Configuration
 import dev.sarquella.plugin.helper.extensions.isAndroidLibrary
 import dev.sarquella.plugin.helper.extensions.params
 import dev.sarquella.plugin.helper.extensions.publishing
+import dev.sarquella.plugin.helper.extensions.task
 import dev.sarquella.plugin.tasks.GenerateSourceJar
 import org.gradle.api.Project
 import org.gradle.api.publish.maven.MavenPublication
@@ -25,7 +26,7 @@ object PublicationConfiguration: Configuration {
             } else {
                 publication.artifact("${project.buildDir}/libs/${project.name}-${params.version.get()}.jar")
             }
-            val sourceJar = project.tasks.withType(GenerateSourceJar::class.java).first()
+            val sourceJar = project.task(GenerateSourceJar::class.java)
             publication.artifact(sourceJar.destinationDirectory) { artifact ->
                 artifact.builtBy(sourceJar)
             }

@@ -41,3 +41,6 @@ fun <T : Task> Project.registerTask(task: Class<T>) {
         get().group = PublisherPlugin.PLUGIN_GROUP
     }
 }
+
+fun <T: Task> Project.task(type: Class<T>): T =
+    tasks.withType(type).first()
