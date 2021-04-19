@@ -10,7 +10,7 @@ import org.gradle.api.Project
 import org.gradle.api.publish.maven.MavenPublication
 import java.net.URI
 
-object PublicationConfiguration: Configuration {
+object PublicationConfiguration : Configuration {
 
     override fun configure(project: Project) {
         val params = project.params
@@ -26,10 +26,7 @@ object PublicationConfiguration: Configuration {
             } else {
                 publication.artifact("${project.buildDir}/libs/${project.name}-${params.version.get()}.jar")
             }
-            val sourceJar = project.task(GenerateSourceJar::class.java)
-            publication.artifact(sourceJar.destinationDirectory) { artifact ->
-                artifact.builtBy(sourceJar)
-            }
+            publication.artifact(project.task(GenerateSourceJar::class.java))
 
             publication.pom { pom ->
                 pom.name.set(params.artifact.get())
@@ -65,12 +62,14 @@ object PublicationConfiguration: Configuration {
                 // Include any needed transitive dependencies
                 pom.withXml { xml ->
                     val dependenciesNode = xml.asNode().appendNode("dependencies")
-                    project.configurations.getByName("implementation").allDependencies.forEach { dependency ->
-                        val dependencyNode = dependenciesNode.appendNode("dependency")
-                        dependencyNode.appendNode("groupId", dependency.group)
-                        dependencyNode.appendNode("artifactId", dependency.name)
-                        dependencyNode.appendNode("version", dependency.version)
-                    }
+                    project.configurations.getByName("implementation").allDependencies
+                        .filterNot { it.group == null }
+                        .forEach { dependency ->
+                            val dependencyNode = dependenciesNode.appendNode("dependency")
+                            dependencyNode.appendNode("groupId", dependency.group)
+                            dependencyNode.appendNode("artifactId", dependency.name)
+                            dependencyNode.appendNode("version", dependency.version)
+                        }
                 }
 
             }
