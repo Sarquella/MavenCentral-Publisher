@@ -26,21 +26,7 @@ gradlePlugin {
     }
 }
 
-//Local publishing
-publishing {
-    repositories {
-        maven {
-            url = uri("$buildDir/repo")
-        }
-    }
-}
-
-tasks {
-
-    register("getPath") {
-        project.plugins.forEach {
-            println(it)
-        }
-    }
-
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
