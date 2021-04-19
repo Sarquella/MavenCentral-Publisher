@@ -120,7 +120,7 @@ Run the following command to upload the library to *MavenCentral*
 ```
 
 ### 5.- Promote to *Release*
-//TODO
+[Promote library to release](https://github.com/Sarquella/MavenCentral-Publisher/blob/main/README-release.md)
 
 # Parameters
 
