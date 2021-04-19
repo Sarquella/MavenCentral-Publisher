@@ -2,6 +2,11 @@
 
 A gradle plugin to easily upload libraries to MavenCentral for distribution.
 
+
+[![Kotlin 100%](https://img.shields.io/static/v1?logo=kotlin&label=Kotlin&message=100%&color=green)]()
+
+[![GitHub Follow](https://img.shields.io/github/followers/Sarquella.svg?label=Follow&style=social)](https://github.com/Sarquella) [![Twitter Follow](https://img.shields.io/twitter/follow/AdriSarquella.svg?label=Follow&style=social)](https://twitter.com/AdriSarquella)
+
 # Requirements
 
 * [Create a project at Sonatype Jira](https://github.com/Sarquella/MavenCentral-Publisher/blob/main/README-sonatype-jira.md)
