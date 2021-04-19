@@ -149,6 +149,10 @@ Run the following command to upload the library to *MavenCentral*
 
 * `propertiesFile` [*Optional*]: Path to custom **.properties file* where credentials are defined. If not set, defaults to *local.properties*.
 
+---
+
+Thanks to [Márton Braun](https://github.com/zsmb13) for this great [article](https://getstream.io/blog/publishing-libraries-to-mavencentral-2021/) which this plugin is inspired on.
+
 # License
 [LICENSE](https://github.com/Sarquella/MavenCentral-Publisher/blob/main/LICENSE)
 
