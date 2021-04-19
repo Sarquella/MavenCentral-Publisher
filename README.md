@@ -132,9 +132,9 @@ Run the following command to upload the library to *MavenCentral*
 
 * `description` [*Optional*]: Short description about the library 
 
-* `repoUrl`: Code repository url (e.g., *https://github.com/<username>/<repository>*)
+* `repoUrl`: Code repository url (e.g., *https://github.com/<username\>/<repository\>*)
 
-* `vcsUrl`: Version control url (e.g., *https://github.com/<username>/<repository>.git*)
+* `vcsUrl`: Version control url (e.g., *https://github.com/<username\>/<repository\>.git*)
 
 * `webUrl` [*Optional*]: Library's website url. If not set, defaults to `repoUrl` value.
 
