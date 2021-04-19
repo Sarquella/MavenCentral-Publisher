@@ -1,19 +1,28 @@
 package dev.sarquella.plugin.tasks
 
 import org.gradle.api.DefaultTask
-import org.gradle.api.tasks.TaskAction
+import org.gradle.api.Task
 
 abstract class PublishToMavenCentral: DefaultTask() {
 
-    @TaskAction
-    fun publish() {
-        val assemble = project.tasks.getByName("assembleRelease")
-        val publish = project.tasks.getByName("publishReleasePublicationToMavencentralRepository")
+    private var assemble: Task? = null
+    private var publish: Task? = null
 
-        dependsOn.add(assemble)
-        dependsOn.add(publish)
+    init {
+        project.tasks.whenTaskAdded { task ->
+            when(task.name) {
+                "assembleRelease" -> {
+                    dependsOn.add(task)
+                    assemble = task
+                }
+                "publishReleasePublicationToMavencentralRepository" -> {
+                    dependsOn.add(task)
+                    publish = task
+                }
+            }
+        }
 
-        publish.mustRunAfter(assemble)
+        publish?.mustRunAfter(assemble)
     }
 
 }
