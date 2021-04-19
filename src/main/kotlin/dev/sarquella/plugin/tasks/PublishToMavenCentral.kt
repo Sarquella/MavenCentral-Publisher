@@ -7,7 +7,13 @@ abstract class PublishToMavenCentral: DefaultTask() {
 
     @TaskAction
     fun publish() {
-        println("Hello from PublisherPlugin")
+        val assemble = project.tasks.getByName("assembleRelease")
+        val publish = project.tasks.getByName("publishReleasePublicationToMavencentralRepository")
+
+        dependsOn.add(assemble)
+        dependsOn.add(publish)
+
+        publish.mustRunAfter(assemble)
     }
 
 }
