@@ -13,7 +13,6 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
     compileOnly("com.android.tools.build:gradle:4.1.3")
 }
 
