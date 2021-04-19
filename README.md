@@ -5,6 +5,7 @@ A gradle plugin to easily upload libraries to MavenCentral for distribution.
 # Requirements
 
 * [Create a project at Sonatype Jira](https://github.com/Sarquella/MavenCentral-Publisher/blob/main/README-sonatype-jira.md)
+* [Create a GPG key pair](https://github.com/Sarquella/MavenCentral-Publisher/blob/main/README-gpg-keys.md)
 
 # Usage
 
@@ -47,8 +48,8 @@ signingKeyPassword=SIGNING_KEY_PASSWORD
 signingKeyFile=SIGNING_KEY_FILE.gpg
 ```
 Replace with your own values:
-* `OSSRH_USERNAME` and `OSSR_PASSWORD` are your *SonaType Jira*'s account credentials.
-* `SIGNING_KEY_ID`, `SIGNING_KEY_PASSWORD` and `SIGNING_KEY_FILE` are your *GPG* key id, passphrase and file path respectively.
+* `OSSRH_USERNAME` and `OSSR_PASSWORD` are your *SonaType Jira*'s account credentials. [See more](https://github.com/Sarquella/MavenCentral-Publisher/blob/main/README-sonatype-jira.md)
+* `SIGNING_KEY_ID`, `SIGNING_KEY_PASSWORD` and `SIGNING_KEY_FILE` are your *GPG* key id, passphrase and file path respectively. [See more](https://github.com/Sarquella/MavenCentral-Publisher/blob/main/README-gpg-keys.md)
 
 ### 3.- Configure publication
 Add the following to your `build.gradle` and replace with your own values:
