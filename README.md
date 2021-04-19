@@ -4,7 +4,7 @@ A gradle plugin to easily upload libraries to MavenCentral for distribution.
 
 # Requirements
 
-//TODO
+* [Create a project at Sonatype Jira](https://github.com/Sarquella/MavenCentral-Publisher/blob/main/README-sonatype-jira.md)
 
 # Usage
 
@@ -131,9 +131,9 @@ Run the following command to upload the library to *MavenCentral*
 
 * `description` [*Optional*]: Short description about the library 
 
-* `repoUrl`: Code repository url (e.g., *https://github.com/<username/<repository>*)
+* `repoUrl`: Code repository url (e.g., *https://github.com/<username>/<repository>*)
 
-* `vcsUrl`: Version control url (e.g., *https://github.com/<username/<repository>.git*)
+* `vcsUrl`: Version control url (e.g., *https://github.com/<username>/<repository>.git*)
 
 * `webUrl` [*Optional*]: Library's website url. If not set, defaults to `repoUrl` value.
 
@@ -149,7 +149,7 @@ Run the following command to upload the library to *MavenCentral*
 * `propertiesFile` [*Optional*]: Path to custom **.properties file* where credentials are defined. If not set, defaults to *local.properties*.
 
 # License
-[LICENSE](https://github.com/Sarquella/MavenCentral-Publisher/blob/readme/LICENSE)
+[LICENSE](https://github.com/Sarquella/MavenCentral-Publisher/blob/main/LICENSE)
 
 ```
 Copyright 2021 Adrià Sarquella Farrés
