@@ -16,8 +16,8 @@ object ProjectConfiguration: Configuration {
 
         project.group = params.groupId.get()
         project.version = params.version.get()
-        project.artifacts.add("archive", javadocJar)
-        project.artifacts.add("archive", sourceJar)
+        project.artifacts.add("archives", javadocJar)
+        project.artifacts.add("archives", sourceJar)
     }
 
 }
