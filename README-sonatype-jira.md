@@ -16,6 +16,8 @@ Create a new account to [Sonatype Jira](https://issues.sonatype.org)
 
 **2.3.** Wait for the *Sonatype* team to respond and follow their instructions (Usually add a *TXT record* to verify your domain <com.company>). Reach back to them again every time a step is completed to let them know.
 
-**2.4.** Publish your library
+### 3. Publish your library
 
-**2.5.** Reach back to the issue to let them know.
+---
+
+**Note:** Once finished, reach back to the issue again to let them know.
