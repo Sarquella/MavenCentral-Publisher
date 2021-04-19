@@ -5,6 +5,7 @@ import dev.sarquella.plugin.helper.extensions.isAndroidLibrary
 import dev.sarquella.plugin.helper.extensions.params
 import dev.sarquella.plugin.helper.extensions.publishing
 import dev.sarquella.plugin.helper.extensions.task
+import dev.sarquella.plugin.tasks.GenerateJavadocJar
 import dev.sarquella.plugin.tasks.GenerateSourceJar
 import org.gradle.api.Project
 import org.gradle.api.publish.maven.MavenPublication
@@ -27,11 +28,15 @@ object PublicationConfiguration : Configuration {
                 publication.artifact("${project.buildDir}/libs/${project.name}-${params.version.get()}.jar")
             }
             publication.artifact(project.task(GenerateSourceJar::class.java))
+            publication.artifact(project.task(GenerateJavadocJar::class.java))
+
 
             publication.pom { pom ->
                 pom.name.set(params.artifact.get())
                 pom.description.set(params.description.orNull)
                 pom.url.set(params.webUrl.orNull ?: params.repoUrl.get())
+
+                pom.packaging = if(project.isAndroidLibrary) "aar" else "jar"
 
                 pom.licenses { licenses ->
                     licenses.license { license ->
