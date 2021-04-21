@@ -23,9 +23,11 @@ object PublicationConfiguration : Configuration {
             publication.version = params.version.get()
 
             if (project.isAndroidLibrary) {
-                publication.artifact("${project.buildDir}/outputs/aar/${project.name}-release.aar")
+                val archiveFile = params.archiveFileName.orNull ?: "${project.name}-release.aar"
+                publication.artifact("${project.buildDir}/outputs/aar/$archiveFile")
             } else {
-                publication.artifact("${project.buildDir}/libs/${project.name}-${params.version.get()}.jar")
+                val archiveFile = params.archiveFileName.orNull ?: "${project.name}-${params.version.get()}.jar"
+                publication.artifact("${project.buildDir}/libs/$archiveFile")
             }
             publication.artifact(project.task(GenerateSourceJar::class.java))
             publication.artifact(project.task(GenerateJavadocJar::class.java))
