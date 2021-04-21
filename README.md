@@ -135,7 +135,7 @@ Run the following command to upload the library to *MavenCentral*
 
 * `version`: Library's current version (e.g., *1.0.0*) 
 
-* `description` [*Optional*]: Short description about the library 
+* `description` [*Optional*]: Short description about the library. If not set, defaults to "-" char. 
 
 * `repoUrl`: Code repository url (e.g., *https://github.com/<username\>/<repository\>*)
 
