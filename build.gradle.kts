@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "dev.sarquella"
-version = "1.0"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -36,5 +36,5 @@ java {
 pluginBundle {
     website = "https://github.com/Sarquella/MavenCentral-Publisher"
     vcsUrl = "https://github.com/Sarquella/MavenCentral-Publisher"
-    tags = listOf("library", "mavencentral", "publish", "sonatype")
+    tags = listOf("library", "mavencentral", "publish", "publishing", "sonatype")
 }
