@@ -31,6 +31,7 @@ abstract class PublicationParamsExtension {
         action.execute(license)
     }
 
+    abstract val archiveFileName: Property<String>
     abstract val propertiesFile: Property<String>
 
     abstract class Developer {
