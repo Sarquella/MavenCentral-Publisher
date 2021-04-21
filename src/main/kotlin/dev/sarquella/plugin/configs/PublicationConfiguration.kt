@@ -33,7 +33,7 @@ object PublicationConfiguration : Configuration {
 
             publication.pom { pom ->
                 pom.name.set(params.artifact.get())
-                pom.description.set(params.description.orNull)
+                pom.description.set(params.description.orNull ?: "")
                 pom.url.set(params.webUrl.orNull ?: params.repoUrl.get())
 
                 pom.packaging = if(project.isAndroidLibrary) "aar" else "jar"
