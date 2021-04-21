@@ -152,6 +152,7 @@ Run the following command to upload the library to *MavenCentral*
 	* `name`: Library's license name (e.g., *The Apache Software License, Version 2.0*) 
 	* `url`: Library's license url (e.g., *http://www.apache.org/licenses/LICENSE-2.0.txt*)
 
+* `archiveFileName` [*Optional*]: Custom build output file name if different from defaults (e.g. *mylibrary-<flavor\>-release.aar*). In Android, defaults to *<project\>-release.aar*. In non-Android, defaults to *<project\>-<version\>.jar*
 * `propertiesFile` [*Optional*]: Path to custom **.properties file* where credentials are defined. If not set, defaults to *local.properties*.
 
 ---
