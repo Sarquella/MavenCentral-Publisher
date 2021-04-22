@@ -18,12 +18,14 @@ A gradle plugin to easily upload libraries to MavenCentral for distribution.
 
 Apply the plugin in your `build.gradle`:
 
+[![Gradle](https://img.shields.io/maven-metadata/v.svg?label=gradle&metadataUrl=https://plugins.gradle.org/m2/dev/sarquella/mavencentral-publisher/maven-metadata.xml)](https://plugins.gradle.org/plugin/dev.sarquella.mavencentral-publisher)
+
 <details>
   <summary>Groovy</summary>
   
 ``` groovy
 plugins {
-	id 'dev.sarquella.mavencentral-publisher' version '1.0'
+	id 'dev.sarquella.mavencentral-publisher' version '1.0.0'
 }
 ```
   
@@ -33,7 +35,7 @@ plugins {
   
 ``` kotlin
 plugins {
-	id("dev.sarquella.mavencentral-publisher") version "1.0"
+	id("dev.sarquella.mavencentral-publisher") version "1.0.0"
 }
 ```
   
